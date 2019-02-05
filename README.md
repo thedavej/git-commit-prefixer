@@ -6,5 +6,9 @@ Copy `prepare-commit-msg` to your repository/.git/hooks directory.
 
 `cp prepare-commit-msg ~/Code/<repository-name>/.git/hooks/prepare-commit-msg`
 
+Then, make sure the file is executable.
+
+`chmod 744 ~/Code/<repository-name>/.git/hooks/prepare-commit-msg`
+
 This script is based on this blos post:
 https://andy-carter.com/blog/automating-git-commit-messages-with-git-hooks
