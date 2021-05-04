@@ -4,7 +4,7 @@ from subprocess import check_output
 
 commit_msg_filepath = sys.argv[1]
 
-branch = check_output(['git', 'symbolic-ref', '--short', 'HEAD']).strip()
+branch = check_output(['git', 'symbolic-ref', '--short', 'HEAD']).strip().decode('utf-8')
 regex = r'(feature|hotfix|epic)\/(\w+-\d+)'
 regex2 = r'(hotfix|release)\/(v\d+.\d+.\d+)'
 issue = None
@@ -19,7 +19,7 @@ if issue is not None:
             if re.match('^(' + issue + ')', commit_msg) is None:
                 fh.seek(0, 0)
                 fh.write('%s: %s' % (issue, commit_msg))
-                
+
 elif branch != 'master' and branch != 'develop':
     print ('Incorrect branch name')
     sys.exit(1)
